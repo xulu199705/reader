@@ -11,7 +11,7 @@ services:
     container_name: reader #容器名 可自行修改
     restart: always
     ports:
-      - 4396:8080 #4396端口映射可自行修改
+      - 8080:8080
     networks:
       - share_net
     volumes:
@@ -26,16 +26,16 @@ services:
       # - READER_APP_REMOTEWEBVIEWAPI=http://remote-webview:8050 #开启远程webview
       # 下面都是多用户模式配置
       - READER_APP_SECURE=true #开启登录鉴权，开启后将支持多用户模式
-      - READER_APP_SECUREKEY=adminpwd  #管理员密码  建议修改
-      - READER_APP_INVITECODE=registercode #注册邀请码 建议修改,如不需要可注释或删除
-  # remote-webview:
-  #   image: hectorqin/remote-webview
-  #   container_name: remote-webview #容器名 可自行修改
-  #   restart: always
-  #   ports:
-  #     - 8050:8050
-  #   networks:
-  #     - share_net
+      - READER_APP_SECUREKEY=vaiuoy82nx2i8o9xy  #管理员密码  建议修改
+      - READER_APP_INVITECODE=1879nx98y #注册邀请码 建议修改,如不需要可注释或删除
+  remote-webview:
+    image: hectorqin/remote-webview
+    container_name: remote-webview #容器名 可自行修改
+    restart: always
+    ports:
+      - 8050:8050
+    networks:
+      - share_net
 # 自动更新docker镜像
   watchtower:
     image: containrrr/watchtower
